@@ -1,0 +1,22 @@
+h1 タスク一覧
+
+= link_to '新規登録', new_article_path, class: 'btn btn-primary' 
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Article.human_attribute_name(:title)
+      th= Article.human_attribute_name(:text)
+      th
+  tbody
+    - @article.each do |article|
+      tr
+        td= link_to article.title, article
+        td= article.created_at
+        td
+          = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-3'
+          = link_to '削除', article, method: :delete, data: { confirm: "記事「#{article.title}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+      tr
+        td[colspan="4"]
+          = article.content
