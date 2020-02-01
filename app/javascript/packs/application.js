@@ -16,6 +16,6 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-require("rails-ujs").start()
 require("trix")
 require("@rails/actiontext")
+import "../stylesheets/actiontext"
