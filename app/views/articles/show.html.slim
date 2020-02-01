@@ -2,11 +2,7 @@ h1 ブログ記事
 
 .nav.justify-content-end
   = link_to '一覧', articles_path, class: 'nav-link'
-p
-  strong
-    | Title:
-  = @article.title
-  = @article.content
+
 table.table.table-hover
   tbody
     tr

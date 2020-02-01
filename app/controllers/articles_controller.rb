@@ -36,7 +36,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text)
-    params.require(:post).permit(:title, :content)  # :contentを追加
+    params.require(:article).permit(:title, :text)  # :contentを追加
   end
 end
