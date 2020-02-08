@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @article = Article.all
+    @articles = Article.all
   end
 
   def show
@@ -23,8 +23,12 @@ class ArticlesController < ApplicationController
 
   def create
     article = Article.new(article_params)
-    article.save!
-    redirect_to articles_url, notice: "記事「#{article.title}」を登録しました。"
+
+    if article.save!
+      redirect_to @article, notice: "記事「#{article.title}」を登録しました。"
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -36,6 +40,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text)  # :contentを追加
+    params.require(:article).permit(:title, :text)
   end
 end

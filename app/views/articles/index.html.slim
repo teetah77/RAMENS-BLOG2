@@ -1,4 +1,4 @@
-h1 タスク一覧
+h1 記事一覧
 
 = link_to '新規登録', new_article_path, class: 'btn btn-primary' 
 
@@ -10,11 +10,10 @@ table.table.table-hover
       th= Article.human_attribute_name(:text)
       th
   tbody
-    - @article.each do |article|
+    - @articles.each do |article|
       tr
         td= link_to article.title, article
         td= article.created_at
         td
           = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-3'
           = link_to '削除', article, method: :delete, data: { confirm: "記事「#{article.title}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
-

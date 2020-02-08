@@ -8,9 +8,10 @@ devise_scope :user do
   get "user/:id", :to => "users/registrations#detail"
   get "signup", :to => "users/registrations#new"
   get "login", :to => "users/sessions#new"
-  get "logout", :to => "users/sessions#destroy"
+  delete "logout", :to => "users/sessions#destroy"
 end
   root to: "articles#index"
-  resources :articles
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :articles do
+    post :confirm, action: :confirm_new, on: :new
+  end
 end
